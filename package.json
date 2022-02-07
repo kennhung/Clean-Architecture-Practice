@@ -31,5 +31,8 @@
     "ext": ".ts,.js",
     "ignore": [],
     "exec": "ts-node-dev ./src/main.ts"
+  },
+  "dependencies": {
+    "nanoid": "^3.2.0"
   }
 }
