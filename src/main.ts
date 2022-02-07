@@ -6,7 +6,9 @@ import { InMemoryUserRepository } from "./infrastructure/repository/user/inMemor
 
     const regUser = new RegisterUser(userRepo);
 
-    const result = await regUser.execute({ name: "Kenn" });
+    const result = await regUser.execute({ name: "Kenn", password: "test" });
 
     console.log(result);
+
+    
 })();

@@ -5,6 +5,7 @@ import { ApplicationService } from "../../types/applicationService";
 
 interface RegisterUserInput {
     name: string;
+    password: string;
 }
 
 interface UserDto {
@@ -25,7 +26,7 @@ export class RegisterUser implements ApplicationService<RegisterUserInput, Regis
 
     async execute(input: RegisterUserInput): Promise<RegisterUserOutput> {
 
-        const newUser = User.createUser({ id: new UserId(nanoid()), name: input.name });
+        const newUser = User.createUser({ id: new UserId(nanoid()), name: input.name, password: input.password });
 
         await this.userRepo.save(newUser);
 
