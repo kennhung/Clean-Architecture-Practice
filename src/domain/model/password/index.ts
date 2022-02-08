@@ -2,7 +2,6 @@ import bcrypt from 'bcrypt';
 import { ValueObject } from "../../../types/valueObject";
 
 export interface PasswordProps {
-    salt: string;
     password: string;
 }
 
@@ -12,12 +11,10 @@ export class Password extends ValueObject<PasswordProps> {
     constructor(plantPassword: string)
     constructor(plantPasswordOrProps: PasswordProps | string) {
         if (typeof plantPasswordOrProps == "string") {
-            const salt = bcrypt.genSaltSync();
-
-            const password = bcrypt.hashSync(plantPasswordOrProps, salt);
+            const password = bcrypt.hashSync(plantPasswordOrProps, 10);
 
             super({
-                salt, password
+                password
             });
         } else {
             super(plantPasswordOrProps);
@@ -25,8 +22,7 @@ export class Password extends ValueObject<PasswordProps> {
     }
 
     verify(password: string): boolean {
-        const result = bcrypt.hashSync(password, this.props.salt);
-        return result === this.props.password;
+        return bcrypt.compareSync(password, this.props.password);
     }
 
 }
