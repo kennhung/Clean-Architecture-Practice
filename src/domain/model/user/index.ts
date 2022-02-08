@@ -5,6 +5,7 @@ import { Password } from "../password";
 export class UserId extends EntityId<string> { };
 
 export interface UserProps {
+    email: string;
     name: string;
     password: Password;
 }
@@ -15,13 +16,23 @@ export class User extends AggregateRoot<UserId, UserProps> {
         return this.props.name;
     }
 
-    static createUser(params: { id: UserId, name: string, password: string }) {
+    get email(): string {
+        return this.props.email;
+    }
 
-
-        return new User(params.id, { name: params.name, password: new Password(params.password) });
+    static createUser(params: { id: UserId, email: string, name: string, password: string }) {
+        return new User(params.id, { name: params.name, email: params.email, password: new Password(params.password) });
     }
 
     changeName(newName: string) {
         this.props.name = newName;
+    }
+
+    changePassword(newPassword: string) {
+        this.props.password = new Password(newPassword);
+    }
+
+    changeEmail(newEmail: string) {
+        this.props.email = newEmail;
     }
 }

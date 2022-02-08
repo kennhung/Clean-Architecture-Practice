@@ -4,11 +4,14 @@ import { UserRepository } from "../../domain/model/user/userRepository";
 import { ApplicationService } from "../../types/applicationService";
 
 interface RegisterUserInput {
+    email: string;
     name: string;
     password: string;
 }
 
 interface UserDto {
+    id: string;
+    email: string;
     name: string;
 }
 
@@ -26,12 +29,23 @@ export class RegisterUser implements ApplicationService<RegisterUserInput, Regis
 
     async execute(input: RegisterUserInput): Promise<RegisterUserOutput> {
 
-        const newUser = User.createUser({ id: new UserId(nanoid()), name: input.name, password: input.password });
+        if (await this.userRepo.checkEmailUsed(input.email)) {
+            throw new Error("Email used");
+        }
+
+        const newUser = User.createUser({
+            id: new UserId(nanoid()),
+            email: input.email,
+            name: input.name,
+            password: input.password
+        });
 
         await this.userRepo.save(newUser);
 
         return {
             user: {
+                id: newUser.id.toValue(),
+                email: newUser.email,
                 name: newUser.name,
             },
         }
