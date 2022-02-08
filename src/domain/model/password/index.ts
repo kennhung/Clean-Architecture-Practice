@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import bcrypt from 'bcrypt';
 import { ValueObject } from "../../../types/valueObject";
 
 export interface PasswordProps {
@@ -12,9 +12,9 @@ export class Password extends ValueObject<PasswordProps> {
     constructor(plantPassword: string)
     constructor(plantPasswordOrProps: PasswordProps | string) {
         if (typeof plantPasswordOrProps == "string") {
-            const salt = crypto.randomBytes(128).toString("base64");
+            const salt = bcrypt.genSaltSync();
 
-            const password = crypto.scryptSync(plantPasswordOrProps, salt, 64).toString("hex");
+            const password = bcrypt.hashSync(plantPasswordOrProps, salt);
 
             super({
                 salt, password
@@ -25,7 +25,7 @@ export class Password extends ValueObject<PasswordProps> {
     }
 
     verify(password: string): boolean {
-        const result = crypto.scryptSync(password, this.props.salt, 64).toString("hex");
+        const result = bcrypt.hashSync(password, this.props.salt);
         return result === this.props.password;
     }
 

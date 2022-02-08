@@ -20,6 +20,10 @@ export class User extends AggregateRoot<UserId, UserProps> {
         return this.props.email;
     }
 
+    get password(): Password {
+        return this.props.password;
+    }
+
     static createUser(params: { id: UserId, email: string, name: string, password: string }) {
         return new User(params.id, { name: params.name, email: params.email, password: new Password(params.password) });
     }
