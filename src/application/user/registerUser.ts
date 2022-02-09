@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { User, UserId } from "../../domain/model/user";
 import { UserRepository } from "../../domain/model/user/userRepository";
+import { UserRoleType } from '../../domain/model/user/userRoleType';
 import { ApplicationService } from "../../types/applicationService";
 
 interface RegisterUserInput {
@@ -37,7 +38,8 @@ export class RegisterUser implements ApplicationService<RegisterUserInput, Regis
             id: new UserId(nanoid()),
             email: input.email,
             name: input.name,
-            password: input.password
+            password: input.password,
+            role: UserRoleType.Admin
         });
 
         await this.userRepo.save(newUser);

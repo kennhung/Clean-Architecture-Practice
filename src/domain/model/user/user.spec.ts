@@ -1,4 +1,5 @@
 import { User, UserId } from ".";
+import { UserRoleType } from "./userRoleType";
 
 describe('User register', () => {
     const defaultProps = {
@@ -6,6 +7,7 @@ describe('User register', () => {
         name: "john doe",
         email: "john@test.com",
         password: "test123",
+        role: UserRoleType.Admin,
     }
 
     it('should pass', () => {

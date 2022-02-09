@@ -1,6 +1,7 @@
 import { AggregateRoot } from "../../../types/aggregateRoot";
 import { EntityId } from "../../../types/entityId";
 import { Password } from "../password";
+import { UserRoleType } from "./userRoleType";
 
 export class UserId extends EntityId<string> { };
 
@@ -8,6 +9,7 @@ export interface UserProps {
     email: string;
     name: string;
     password: Password;
+    role: UserRoleType;
 }
 
 export class User extends AggregateRoot<UserId, UserProps> {
@@ -24,8 +26,13 @@ export class User extends AggregateRoot<UserId, UserProps> {
         return this.props.password;
     }
 
-    static createUser(params: { id: UserId, email: string, name: string, password: string }) {
-        return new User(params.id, { name: params.name, email: params.email, password: new Password(params.password) });
+    static createUser(params: { id: UserId, email: string, name: string, password: string, role: UserRoleType }) {
+        return new User(params.id, {
+            name: params.name,
+            email: params.email,
+            password: new Password(params.password),
+            role: params.role,
+        });
     }
 
     changeName(newName: string) {
