@@ -1,10 +1,10 @@
-import { Discussion } from "../../domain/model/discussion";
-import { DiscussionRepository } from "../../domain/model/discussion/discussionRepository";
-import { PostRepository } from "../../domain/model/post/postRepository";
-import { UserId } from "../../domain/model/user";
-import { UserRepository } from "../../domain/model/user/userRepository";
-import { Command, CommandProps } from "../../types/application/command/command";
-import { CommandHandler } from "../../types/application/command/commandHandler";
+import { Discussion } from "../../../domain/model/discussion";
+import { DiscussionRepository } from "../../../domain/model/discussion/discussionRepository";
+import { PostRepository } from "../../../domain/model/post/postRepository";
+import { UserId } from "../../../domain/model/user";
+import { UserRepository } from "../../../domain/model/user/userRepository";
+import { Command, CommandProps } from "../../../types/application/command/command";
+import { CommandHandler } from "../../../types/application/command/commandHandler";
 
 export class CreateDiscussionCommand extends Command {
     readonly authorId: string;

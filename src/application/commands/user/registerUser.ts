@@ -1,9 +1,9 @@
 import { nanoid } from 'nanoid';
-import { User, UserId } from "../../domain/model/user";
-import { UserRepository } from "../../domain/model/user/userRepository";
-import { UserRoleType } from '../../domain/model/user/userRoleType';
-import { Command, CommandProps } from '../../types/application/command/command';
-import { CommandHandler } from '../../types/application/command/commandHandler';
+import { User, UserId } from "../../../domain/model/user";
+import { UserRepository } from "../../../domain/model/user/userRepository";
+import { UserRoleType } from '../../../domain/model/user/userRoleType';
+import { Command, CommandProps } from '../../../types/application/command/command';
+import { CommandHandler } from '../../../types/application/command/commandHandler';
 
 export class RegisterUserCommand extends Command {
     readonly email: string;

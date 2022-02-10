@@ -1,5 +1,5 @@
-import { CreateDiscussion, CreateDiscussionCommand } from "./application/discussion/createDiscussion";
-import { RegisterUser, RegisterUserCommand } from "./application/user/registerUser";
+import { CreateDiscussion, CreateDiscussionCommand } from "./application/commands/discussion/createDiscussion";
+import { RegisterUser, RegisterUserCommand } from "./application/commands/user/registerUser";
 import { InMemoryDiscussionRepository } from "./infrastructure/repository/discussion/inMemoryDiscussionRepository";
 import { InMemoryPostRepository } from "./infrastructure/repository/post/inMemoryPostRepository";
 import { InMemoryUserRepository } from "./infrastructure/repository/user/inMemoryUserRepository";
