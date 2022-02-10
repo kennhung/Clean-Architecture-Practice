@@ -1,8 +1,9 @@
+import { nanoid } from "nanoid";
 import { CreateDiscussion, CreateDiscussionCommand } from "./application/commands/discussion/createDiscussion";
 import { RegisterUser, RegisterUserCommand } from "./application/commands/user/registerUser";
-import { InMemoryDiscussionRepository } from "./infrastructure/repository/discussion/inMemoryDiscussionRepository";
-import { InMemoryPostRepository } from "./infrastructure/repository/post/inMemoryPostRepository";
-import { InMemoryUserRepository } from "./infrastructure/repository/user/inMemoryUserRepository";
+import { InMemoryDiscussionRepository } from "./modules/discussion/repository/inMemoryDiscussionRepository";
+import { InMemoryPostRepository } from "./modules/post/repository/inMemoryPostRepository";
+import { InMemoryUserRepository } from "./modules/user/repository/inMemoryUserRepository";
 
 (async function () {
     const userRepo = new InMemoryUserRepository();

@@ -1,7 +1,7 @@
 import { AggregateRoot } from "../../../types/domain/aggregateRoot";
-import { Post, PostId } from "../post";
-import { UserId } from "../user";
-import { DiscussionId } from "./discussionId";
+import { Post, PostId } from "../../post/domain/post.entity";
+import { UserId } from "../../user/domain/user.entity";
+import { DiscussionId } from "./discussion.id";
 
 export interface DiscussionProps {
     title: string;

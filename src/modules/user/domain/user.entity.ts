@@ -1,7 +1,7 @@
+import { UserRoleType } from "./userRoleType";
 import { AggregateRoot } from "../../../types/domain/aggregateRoot";
 import { EntityId } from "../../../types/domain/entityId";
-import { Password } from "../password";
-import { UserRoleType } from "./userRoleType";
+import { Password } from "./password.value-object";
 
 export class UserId extends EntityId<string> { };
 

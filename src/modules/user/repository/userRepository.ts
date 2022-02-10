@@ -1,4 +1,4 @@
-import { User, UserId } from ".";
+import { User, UserId } from "../domain/user.entity";
 
 export interface UserRepository {
     nextId(): Promise<UserId>;

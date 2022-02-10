@@ -1,4 +1,4 @@
-import { Post, PostId } from ".";
+import { Post, PostId } from "../domain/post.entity";
 
 export interface PostRepository {
     nextId(): Promise<PostId>;

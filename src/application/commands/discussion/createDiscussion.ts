@@ -1,8 +1,8 @@
 import { Discussion } from "../../../domain/model/discussion";
-import { DiscussionRepository } from "../../../domain/model/discussion/discussionRepository";
-import { PostRepository } from "../../../domain/model/post/postRepository";
+import { DiscussionRepository } from "../../../modules/discussion/repository/discussionRepository";
+import { PostRepository } from "../../../modules/post/repository/postRepository";
 import { UserId } from "../../../domain/model/user";
-import { UserRepository } from "../../../domain/model/user/userRepository";
+import { UserRepository } from "../../../modules/user/repository/userRepository";
 import { Command, CommandProps } from "../../../types/application/command/command";
 import { CommandHandler } from "../../../types/application/command/commandHandler";
 

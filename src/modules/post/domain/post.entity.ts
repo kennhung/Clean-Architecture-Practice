@@ -1,7 +1,7 @@
+import { DiscussionId } from "../../../domain/model/discussion/discussionId";
 import { AggregateRoot } from "../../../types/domain/aggregateRoot";
 import { EntityId } from "../../../types/domain/entityId";
-import { DiscussionId } from "../discussion/discussionId";
-import { UserId } from "../user";
+import { UserId } from "../../user/domain/user.entity";
 
 export class PostId extends EntityId<string> { }
 
@@ -28,5 +28,5 @@ export class Post extends AggregateRoot<PostId, PostProps> {
     get postAt() {
         return this.props.postAt;
     }
-    
+
 }

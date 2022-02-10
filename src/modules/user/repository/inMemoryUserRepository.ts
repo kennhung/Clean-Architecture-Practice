@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
-import { UserId, User } from "../../../domain/model/user";
-import { UserRepository } from "../../../domain/model/user/userRepository";
-import { GeneralInMemoryRepository } from "../generalInMemoryRepository";
+import { GeneralInMemoryRepository } from "../../../infrastructure/repository/generalInMemoryRepository";
+import { UserRepository } from "../../../modules/user/repository/userRepository";
+import { User, UserId } from "../domain/user.entity";
 
 export class InMemoryUserRepository
     extends GeneralInMemoryRepository<UserId, User>

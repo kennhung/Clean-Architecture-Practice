@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
-import { User, UserId } from "../../../domain/model/user";
-import { UserRepository } from "../../../domain/model/user/userRepository";
-import { UserRoleType } from '../../../domain/model/user/userRoleType';
+import { UserRepository } from "../../../modules/user/repository/userRepository";
+import { UserRoleType } from '../../../modules/user/domain/userRoleType';
+import { User, UserId } from '../../../modules/user/domain/user.entity';
 import { Command, CommandProps } from '../../../types/application/command/command';
 import { CommandHandler } from '../../../types/application/command/commandHandler';
 

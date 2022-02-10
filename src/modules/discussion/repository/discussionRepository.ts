@@ -1,5 +1,5 @@
-import { Discussion } from ".";
-import { DiscussionId } from "./discussionId";
+import { Discussion } from "../domain/discussion.entity";
+import { DiscussionId } from "../domain/discussion.id";
 
 export interface DiscussionRepository {
     nextId(): Promise<DiscussionId>;

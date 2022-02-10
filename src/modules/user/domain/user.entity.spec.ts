@@ -1,5 +1,5 @@
-import { User, UserId } from ".";
 import { UserRoleType } from "./userRoleType";
+import { User, UserId } from "./user.entity";
 
 describe('User register', () => {
     const defaultProps = {

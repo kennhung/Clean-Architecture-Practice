@@ -1,6 +1,6 @@
-import { Password } from ".";
+import { Password } from "./password.value-object";
 
-describe("Password VO", () => {
+describe("Password Value Object", () => {
 
     it("should looks different when password is same", () => {
         const password1 = new Password("test");
