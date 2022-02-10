@@ -4,6 +4,7 @@ import { UserRoleType } from '../../domain/userRoleType';
 import { User, UserId } from '../../domain/user.entity';
 import { CommandHandler } from '../../../../types/application/command/commandHandler';
 import { RegisterUserCommand } from './registerUser.command';
+import { UserDto } from '../../dtos/user.dto';
 
 interface RegisterUserCommandOutput {
     user: UserDto;

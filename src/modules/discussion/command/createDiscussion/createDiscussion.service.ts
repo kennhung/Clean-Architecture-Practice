@@ -1,8 +1,10 @@
 import { CommandHandler } from "../../../../types/application/command/commandHandler";
+import { PostDto } from "../../../post/dtos/post.dto";
 import { PostRepository } from "../../../post/repository/postRepository";
 import { UserId } from "../../../user/domain/user.entity";
 import { UserRepository } from "../../../user/repository/userRepository";
 import { Discussion } from "../../domain/discussion.entity";
+import { DiscussionDto } from "../../dtos/discussion.dto";
 import { DiscussionRepository } from "../../repository/discussionRepository";
 import { CreateDiscussionCommand } from "./createDiscussion.command";
 

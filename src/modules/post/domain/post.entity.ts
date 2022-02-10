@@ -1,6 +1,6 @@
-import { DiscussionId } from "../../../domain/model/discussion/discussionId";
 import { AggregateRoot } from "../../../types/domain/aggregateRoot";
 import { EntityId } from "../../../types/domain/entityId";
+import { DiscussionId } from "../../discussion/domain/discussion.id";
 import { UserId } from "../../user/domain/user.entity";
 
 export class PostId extends EntityId<string> { }
