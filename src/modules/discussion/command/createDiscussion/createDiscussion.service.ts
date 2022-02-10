@@ -1,36 +1,10 @@
-import { Discussion } from "../../../domain/model/discussion";
-import { DiscussionRepository } from "../../../modules/discussion/repository/discussionRepository";
-import { PostRepository } from "../../../modules/post/repository/postRepository";
-import { UserId } from "../../../domain/model/user";
-import { UserRepository } from "../../../modules/user/repository/userRepository";
-import { Command, CommandProps } from "../../../types/application/command/command";
-import { CommandHandler } from "../../../types/application/command/commandHandler";
-
-export class CreateDiscussionCommand extends Command {
-    readonly authorId: string;
-    readonly title: string;
-    readonly content: string;
-
-    constructor(props: CommandProps<CreateDiscussionCommand>) {
-        super(props);
-
-        this.authorId = props.authorId;
-        this.title = props.title;
-        this.content = props.content;
-    }
-}
-
-interface DiscussionDto {
-    id: string;
-    title: string;
-    authorId: string;
-}
-
-interface PostDto {
-    id: string;
-    content: string;
-    authroId: string;
-}
+import { CommandHandler } from "../../../../types/application/command/commandHandler";
+import { PostRepository } from "../../../post/repository/postRepository";
+import { UserId } from "../../../user/domain/user.entity";
+import { UserRepository } from "../../../user/repository/userRepository";
+import { Discussion } from "../../domain/discussion.entity";
+import { DiscussionRepository } from "../../repository/discussionRepository";
+import { CreateDiscussionCommand } from "./createDiscussion.command";
 
 interface CreateDiscussionCommandOutput {
     discussion: DiscussionDto;

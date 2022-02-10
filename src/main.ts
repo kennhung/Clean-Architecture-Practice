@@ -1,8 +1,9 @@
-import { nanoid } from "nanoid";
-import { CreateDiscussion, CreateDiscussionCommand } from "./application/commands/discussion/createDiscussion";
-import { RegisterUser, RegisterUserCommand } from "./application/commands/user/registerUser";
+import { CreateDiscussionCommand } from "./modules/discussion/command/createDiscussion/createDiscussion.command";
+import { CreateDiscussion } from "./modules/discussion/command/createDiscussion/createDiscussion.service";
 import { InMemoryDiscussionRepository } from "./modules/discussion/repository/inMemoryDiscussionRepository";
 import { InMemoryPostRepository } from "./modules/post/repository/inMemoryPostRepository";
+import { RegisterUserCommand } from "./modules/user/command/registerUser/registerUser.command";
+import { RegisterUser } from "./modules/user/command/registerUser/registerUser.service";
 import { InMemoryUserRepository } from "./modules/user/repository/inMemoryUserRepository";
 
 (async function () {

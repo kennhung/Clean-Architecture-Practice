@@ -1,29 +1,9 @@
 import { nanoid } from 'nanoid';
-import { UserRepository } from "../../../modules/user/repository/userRepository";
-import { UserRoleType } from '../../../modules/user/domain/userRoleType';
-import { User, UserId } from '../../../modules/user/domain/user.entity';
-import { Command, CommandProps } from '../../../types/application/command/command';
-import { CommandHandler } from '../../../types/application/command/commandHandler';
-
-export class RegisterUserCommand extends Command {
-    readonly email: string;
-    readonly name: string;
-    readonly password: string;
-
-    constructor(props: CommandProps<RegisterUserCommand>) {
-        super(props);
-
-        this.email = props.email;
-        this.name = props.name;
-        this.password = props.password;
-    }
-}
-
-interface UserDto {
-    id: string;
-    email: string;
-    name: string;
-}
+import { UserRepository } from "../../repository/userRepository";
+import { UserRoleType } from '../../domain/userRoleType';
+import { User, UserId } from '../../domain/user.entity';
+import { CommandHandler } from '../../../../types/application/command/commandHandler';
+import { RegisterUserCommand } from './registerUser.command';
 
 interface RegisterUserCommandOutput {
     user: UserDto;
