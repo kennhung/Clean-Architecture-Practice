@@ -1,5 +1,5 @@
-import { AggregateRoot } from "../../../types/aggregateRoot";
-import { EntityId } from "../../../types/entityId";
+import { AggregateRoot } from "../../../types/domain/aggregateRoot";
+import { EntityId } from "../../../types/domain/entityId";
 import { DiscussionId } from "../discussion/discussionId";
 import { UserId } from "../user";
 

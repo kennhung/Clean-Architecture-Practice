@@ -2,12 +2,21 @@ import { nanoid } from 'nanoid';
 import { User, UserId } from "../../domain/model/user";
 import { UserRepository } from "../../domain/model/user/userRepository";
 import { UserRoleType } from '../../domain/model/user/userRoleType';
-import { ApplicationService } from "../../types/applicationService";
+import { Command, CommandProps } from '../../types/application/command/command';
+import { CommandHandler } from '../../types/application/command/commandHandler';
 
-interface RegisterUserInput {
-    email: string;
-    name: string;
-    password: string;
+export class RegisterUserCommand extends Command {
+    readonly email: string;
+    readonly name: string;
+    readonly password: string;
+
+    constructor(props: CommandProps<RegisterUserCommand>) {
+        super(props);
+
+        this.email = props.email;
+        this.name = props.name;
+        this.password = props.password;
+    }
 }
 
 interface UserDto {
@@ -16,11 +25,11 @@ interface UserDto {
     name: string;
 }
 
-interface RegisterUserOutput {
+interface RegisterUserCommandOutput {
     user: UserDto;
 }
 
-export class RegisterUser implements ApplicationService<RegisterUserInput, RegisterUserOutput> {
+export class RegisterUser implements CommandHandler<RegisterUserCommand, RegisterUserCommandOutput> {
 
     private userRepo: UserRepository;
 
@@ -28,7 +37,7 @@ export class RegisterUser implements ApplicationService<RegisterUserInput, Regis
         this.userRepo = userRepo;
     }
 
-    async execute(input: RegisterUserInput): Promise<RegisterUserOutput> {
+    async execute(input: RegisterUserCommand): Promise<RegisterUserCommandOutput> {
 
         if (await this.userRepo.checkEmailUsed(input.email)) {
             throw new Error("Email used");

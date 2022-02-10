@@ -1,12 +1,10 @@
-import { ValueObject } from './valueObject';
+import { ValueObject } from "./valueObject";
 
-interface EntityIdProps<Value> {
+interface IdProps<Value> {
     value: Value;
 }
 
-export abstract class EntityId<Value> extends ValueObject<
-    EntityIdProps<Value>
-> {
+export abstract class Id<Value> extends ValueObject<IdProps<Value>> {
     constructor(value: Value) {
         super({ value });
     }
@@ -26,13 +24,13 @@ export abstract class EntityId<Value> extends ValueObject<
         return this.props.value;
     }
 
-    equals(entityId: EntityId<Value>): boolean {
-        if (entityId === null || entityId === undefined) {
+    equals(id: Id<Value>): boolean {
+        if (id === null || id === undefined) {
             return false;
         }
-        if (!(entityId instanceof this.constructor)) {
+        if (!(id instanceof this.constructor)) {
             return false;
         }
-        return entityId.value === this.value;
+        return id.value === this.value;
     }
 }

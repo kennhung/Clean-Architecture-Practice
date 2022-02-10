@@ -1,6 +1,6 @@
 import { Entity } from './entity';
 import { EntityId } from './entityId';
-import { DomainEvent } from './event/domainEvent';
+import { DomainEvent } from '../event/domainEvent';
 
 export abstract class AggregateRoot<
     Id extends EntityId<unknown>,

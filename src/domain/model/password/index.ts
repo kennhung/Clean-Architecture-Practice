@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { ValueObject } from "../../../types/valueObject";
+import { ValueObject } from '../../../types/domain/valueObject';
 
 export interface PasswordProps {
     password: string;

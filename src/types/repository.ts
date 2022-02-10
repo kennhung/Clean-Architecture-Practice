@@ -1,4 +1,4 @@
-import { AggregateRoot } from "./aggregateRoot";
+import { AggregateRoot } from "./domain/aggregateRoot";
 import { Entity } from "./entity";
 import { EntityId } from "./entityId";
 

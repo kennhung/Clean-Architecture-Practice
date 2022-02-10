@@ -1,5 +1,5 @@
-import { Entity } from "../../types/entity";
-import { EntityId } from "../../types/entityId";
+import { Entity } from "../../types/domain/entity";
+import { EntityId } from "../../types/domain/entityId";
 
 export abstract class GeneralInMemoryRepository<Id extends EntityId<unknown>, E extends Entity<Id, unknown>> {
     protected dataArr: E[] = [];

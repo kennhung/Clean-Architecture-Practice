@@ -1,4 +1,4 @@
-import { AggregateRoot } from "../../../types/aggregateRoot";
+import { AggregateRoot } from "../../../types/domain/aggregateRoot";
 import { Post, PostId } from "../post";
 import { UserId } from "../user";
 import { DiscussionId } from "./discussionId";

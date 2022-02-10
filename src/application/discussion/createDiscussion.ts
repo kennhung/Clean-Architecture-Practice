@@ -3,12 +3,21 @@ import { DiscussionRepository } from "../../domain/model/discussion/discussionRe
 import { PostRepository } from "../../domain/model/post/postRepository";
 import { UserId } from "../../domain/model/user";
 import { UserRepository } from "../../domain/model/user/userRepository";
-import { ApplicationService } from "../../types/applicationService";
+import { Command, CommandProps } from "../../types/application/command/command";
+import { CommandHandler } from "../../types/application/command/commandHandler";
 
-interface CreateDiscussionInput {
-    authorId: string;
-    title: string;
-    content: string;
+export class CreateDiscussionCommand extends Command {
+    readonly authorId: string;
+    readonly title: string;
+    readonly content: string;
+
+    constructor(props: CommandProps<CreateDiscussionCommand>) {
+        super(props);
+
+        this.authorId = props.authorId;
+        this.title = props.title;
+        this.content = props.content;
+    }
 }
 
 interface DiscussionDto {
@@ -23,12 +32,12 @@ interface PostDto {
     authroId: string;
 }
 
-interface CreateDiscussionOutput {
+interface CreateDiscussionCommandOutput {
     discussion: DiscussionDto;
     post: PostDto;
 }
 
-export class CreateDiscussion implements ApplicationService<CreateDiscussionInput, CreateDiscussionOutput> {
+export class CreateDiscussion implements CommandHandler<CreateDiscussionCommand, CreateDiscussionCommandOutput> {
     private discussionRepo: DiscussionRepository;
     private userRepo: UserRepository;
     private postRepo: PostRepository;
@@ -39,7 +48,7 @@ export class CreateDiscussion implements ApplicationService<CreateDiscussionInpu
         this.postRepo = postRepo;
     }
 
-    async execute(input: CreateDiscussionInput): Promise<CreateDiscussionOutput> {
+    async execute(input: CreateDiscussionCommand): Promise<CreateDiscussionCommandOutput> {
         const author = await this.userRepo.fromId(new UserId(input.authorId));
         if (!author) {
             throw new Error("author not found");
